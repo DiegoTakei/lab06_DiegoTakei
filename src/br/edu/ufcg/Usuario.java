@@ -52,6 +52,12 @@ public abstract class Usuario {
 	public int getX2p() {
 		return x2p;
 	}
+
+
+	public void setDinheiro(double dinheiro) {
+		this.dinheiro = dinheiro;
+	}
+	
 	
 	
 	
