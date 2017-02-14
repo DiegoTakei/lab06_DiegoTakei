@@ -1,4 +1,4 @@
-package br.edu.ufcg;
+package jogos;
 
 public class Plataforma extends Jogo {
 

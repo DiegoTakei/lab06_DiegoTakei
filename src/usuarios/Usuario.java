@@ -1,6 +1,8 @@
-package br.edu.ufcg;
+package usuarios;
 
 import java.util.HashSet;
+
+import jogos.Jogo;
 
 public abstract class Usuario {
 	
@@ -26,6 +28,14 @@ public abstract class Usuario {
 		
 		this.x2p += jogo.registraJogada(score, zerou);
 
+	}
+	
+	public boolean contemJogo(String nomeJogo){
+		
+		for (Jogo jogo : jogos) {
+			if (nomeJogo.equals(jogo)) return true;
+		}
+		return false;
 	}
 
 

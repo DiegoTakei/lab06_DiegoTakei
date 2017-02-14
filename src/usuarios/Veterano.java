@@ -1,32 +1,35 @@
-package br.edu.ufcg;
+package usuarios;
 
 import java.util.HashSet;
 
-public class Noob extends Usuario {
+import exceptions.UsuarioException;
+import jogos.Jogo;
 
-	public Noob(String nome, String login, double dinheiro) throws Exception{
+public class Veterano extends Usuario {
+
+public Veterano(String nome, String login, double dinheiro) throws UsuarioException{
 		
 		if(nome != "")
 			this.nome = nome;
 		else{
-			throw new Exception("Nome inválido.");
+			throw new UsuarioException("Nome inválido.");
 		}
 		
 		if(login != "")
 			this.login = login;
 		else{
-			throw new Exception("Login inválido.");
+			throw new UsuarioException("Login inválido.");
 		}
 		if(dinheiro >= 0)
 			this.dinheiro = dinheiro;
 		else{
-			throw new Exception("Dinheiro inválido.");
+			throw new UsuarioException("Dinheiro inválido.");
 		}
 		
 		this.jogos = new HashSet<>();
-		this.x2p = 0;
+		this.x2p = 1000;
 		
-	}
+}
 
 	@Override
 	public boolean comprarJogo(Jogo jogo) {
@@ -42,7 +45,5 @@ public class Noob extends Usuario {
 			return false;
 		}
 	}
-	
-	
 
 }

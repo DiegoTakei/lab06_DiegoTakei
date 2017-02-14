@@ -1,6 +1,8 @@
-package br.edu.ufcg;
+package jogos;
 
 import java.util.HashSet;
+
+import br.edu.ufcg.Jogabilidade;
 
 public abstract class Jogo {
 	
@@ -29,7 +31,7 @@ public abstract class Jogo {
 		this.score = 0;
 		this.vezes_jogadas = 0;
 		this.vezes_zeradas = 0;
-		this.estilo = new HashSet();
+		this.estilo = new HashSet<Jogabilidade>();
 		
 		
 	}
