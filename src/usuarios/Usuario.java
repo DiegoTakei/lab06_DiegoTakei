@@ -20,6 +20,9 @@ public abstract class Usuario {
 		if (valor > 0){
 			dinheiro += valor;
 		}
+		else{
+			throw new UsuarioException("Valor inválido.")
+		}
 		
 		return false;
 	}
