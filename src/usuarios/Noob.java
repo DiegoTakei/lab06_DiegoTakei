@@ -30,7 +30,12 @@ public class Noob extends Usuario {
 		this.x2p = 0;
 		
 	}
-
+	
+	/**
+	 * Compra um jogo com seu desconto
+	 * @param jogo
+	 * @return
+	 */
 	@Override
 	public boolean comprarJogo(Jogo jogo) {
 		

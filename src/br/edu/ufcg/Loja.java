@@ -14,6 +14,12 @@ public class Loja {
 		
 	}
 	
+	/**
+	 * Adiciona dinheiro ‡ conta do usu·rio cujo login foi passado por par‚metro.
+	 * @param login
+	 * @param dinheiro
+	 * @throws LojaException
+	 */
 	public void adicionarDinheiro(String login, double dinheiro) throws LojaException{
 		
 		Usuario usuario = pesquisarUsuario(login);
@@ -22,19 +28,28 @@ public class Loja {
 			if(dinheiro>=0)
 				usuario.setDinheiro(dinheiro);
 			else{
-				throw new LojaException("Dinheiro Inv√°lido.");
+				throw new LojaException("Dinheiro Inv·lido.");
 			}
 		}else{
-			throw new LojaException("Usuario n√£o existe.");
+			throw new LojaException("Usuario n„o existe.");
 		}
 		
 	}
 	
+	/**
+	 *  Vende e adiciona um jogo ‡ conta do usu·rio, caso o mesmo possua dinheiro suficiente para compr·-lo.
+	 * @param login
+	 * @param jogo
+	 * @return
+	 */
 	public boolean venderJogos(String login, Jogo jogo){
 		return false;
 		
 	}
 	
+	/**
+	 * Imprime todos os usu·rios e seus respectivos jogos e estatÌsticas.
+	 */
 	public void imprimirAll(){
 		
 		double totalPrecoJogos = 0;
@@ -56,17 +71,26 @@ public class Loja {
 				System.out.println("Maior score: "+jogo.getScore());
 				
 			}
-			System.out.println("Total de pre√ßo dos jogos: R$ "+ totalPrecoJogos);
+			System.out.println("Total de preÁo dos jogos: R$ "+ totalPrecoJogos);
 		}
 		
 	}
 	
+	/**
+	 * Adiciona um usu·rio ‡ loja.
+	 * @param usuario
+	 */
 	public void adicionarUsuario(Usuario usuario){
 		
 		usuarios.add(usuario);
 		
 	}
 	
+	/**
+	 * Pesquisa um usu·rio existente na loja.
+	 * @param login
+	 * @return
+	 */
 	public Usuario pesquisarUsuario(String login){
 		
 		for (Usuario usuario : usuarios) {

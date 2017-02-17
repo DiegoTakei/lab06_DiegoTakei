@@ -12,25 +12,30 @@ public Veterano(String nome, String login, double dinheiro) throws UsuarioExcept
 		if(nome != "")
 			this.nome = nome;
 		else{
-			throw new UsuarioException("Nome inv√°lido.");
+			throw new UsuarioException("Nome inv·lido.");
 		}
 		
 		if(login != "")
 			this.login = login;
 		else{
-			throw new UsuarioException("Login inv√°lido.");
+			throw new UsuarioException("Login inv·lido.");
 		}
 		if(dinheiro >= 0)
 			this.dinheiro = dinheiro;
 		else{
-			throw new UsuarioException("Dinheiro inv√°lido.");
+			throw new UsuarioException("Dinheiro inv·lido.");
 		}
 		
 		this.jogos = new HashSet<>();
 		this.x2p = 1000;
 		
 }
-
+	
+	/**
+	 * Compra um jogo com seu desconto.
+	 * @param jogo
+	 * @return
+	 */
 	@Override
 	public boolean comprarJogo(Jogo jogo) {
 		
