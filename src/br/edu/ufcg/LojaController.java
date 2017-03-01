@@ -2,20 +2,22 @@ package br.edu.ufcg;
 
 import java.util.HashSet;
 
+import exceptions.JogoException;
 import exceptions.LojaException;
+import exceptions.UsuarioException;
 import jogos.Jogo;
 import usuarios.Usuario;
 
-public class Loja {
+public class LojaController {
 
 	HashSet<Usuario> usuarios = new HashSet<Usuario>();
 	
-	public Loja() {
+	public LojaController() {
 		
 	}
 	
 	/**
-	 * Adiciona dinheiro à conta do usuário cujo login foi passado por parâmetro.
+	 * Adiciona dinheiro ï¿½ conta do usuï¿½rio cujo login foi passado por parï¿½metro.
 	 * @param login
 	 * @param dinheiro
 	 * @throws LojaException
@@ -28,16 +30,16 @@ public class Loja {
 			if(dinheiro>=0)
 				usuario.setDinheiro(dinheiro);
 			else{
-				throw new LojaException("Dinheiro Inválido.");
+				throw new LojaException("Dinheiro Invï¿½lido.");
 			}
 		}else{
-			throw new LojaException("Usuario não existe.");
+			throw new LojaException("Usuario nï¿½o existe.");
 		}
 		
 	}
 	
 	/**
-	 *  Vende e adiciona um jogo à conta do usuário, caso o mesmo possua dinheiro suficiente para comprá-lo.
+	 *  Vende e adiciona um jogo ï¿½ conta do usuï¿½rio, caso o mesmo possua dinheiro suficiente para comprï¿½-lo.
 	 * @param login
 	 * @param jogo
 	 * @return
@@ -48,7 +50,7 @@ public class Loja {
 	}
 	
 	/**
-	 * Imprime todos os usuários e seus respectivos jogos e estatísticas.
+	 * Imprime todos os usuï¿½rios e seus respectivos jogos e estatï¿½sticas.
 	 */
 	public void imprimirAll(){
 		
@@ -71,13 +73,29 @@ public class Loja {
 				System.out.println("Maior score: "+jogo.getScore());
 				
 			}
-			System.out.println("Total de preço dos jogos: R$ "+ totalPrecoJogos);
+			System.out.println("Total de preï¿½o dos jogos: R$ "+ totalPrecoJogos);
 		}
 		
 	}
 	
+	public void criaUsuario(String nome, String login, String tipo) throws UsuarioException{
+		
+		FactoryDeUsuario factory = new FactoryDeUsuario();
+		
+		factory.criaUsuario(nome, login, tipo);
+		
+	}
+	
+	public void criaJogo(String nome, double preco, String tipo) throws JogoException {
+		
+		FactoryDeJogo factory = new FactoryDeJogo();
+		
+		factory.criaJogo(nome, preco, tipo);
+		
+	}
+	
 	/**
-	 * Adiciona um usuário à loja.
+	 * Adiciona um usuï¿½rio ï¿½ loja.
 	 * @param usuario
 	 */
 	public void adicionarUsuario(Usuario usuario){
@@ -87,7 +105,7 @@ public class Loja {
 	}
 	
 	/**
-	 * Pesquisa um usuário existente na loja.
+	 * Pesquisa um usuï¿½rio existente na loja.
 	 * @param login
 	 * @return
 	 */

@@ -2,36 +2,38 @@ package usuarios;
 
 import java.util.HashSet;
 
+import exceptions.UsuarioException;
 import jogos.Jogo;
 
-public abstract class Usuario {
+public class Usuario {
 	
+	private TipodeUsuarioIF statusDoUsuario;
 	protected String nome;
 	protected String login;
 	protected HashSet<Jogo> jogos;
 	protected double dinheiro;
-	protected int x2p;
-	
-	public abstract boolean comprarJogo(Jogo jogo);
-
+	protected int x2p;	
 	
 	/**
-	 * Adiciona dinheiro ao usuário caso o valor passado por parâmetro seja válido.
+	 * Adiciona dinheiro ao usuï¿½rio caso o valor passado por parï¿½metro seja vï¿½lido.
 	 * @param valor
+	 * @throws UsuarioException 
 	 */
-	public void adicionarDinheiro(double valor){
+	public void adicionarDinheiro(double valor) throws UsuarioException{
 		
 		if (valor > 0){
 			dinheiro += valor;
 		}
 		else{
-			throw new UsuarioException("Valor inválido.")
+			throw new UsuarioException("Valor invï¿½lido.");
 		}
 
 	}
 	
+	/*public void registraJogada(Jogo jogo, int score, boolean zerou){
+=======
 	/**
-	 * Registra uma jogada feita pelo usuário em um determinado jogo.
+	 * Registra uma jogada feita pelo usuï¿½rio em um determinado jogo.
 	 * @param jogo
 	 * @param score
 	 * @param zerou
@@ -41,19 +43,29 @@ public abstract class Usuario {
 		this.x2p += jogo.registraJogada(score, zerou);
 
 	}
-	
-	/**
-	 * Verifica se o usuário possui determinado jogo.
+		
+	 /**
+	 * Verifica se o usuï¿½rio possui determinado jogo.
 	 * @param nomeJogo
 	 * @return
 	 */
 	public boolean contemJogo(String nomeJogo){
 		
 		for (Jogo jogo : jogos) {
-			if (nomeJogo.equals(jogo)) return true;
+			if (nomeJogo.equals(jogo.getNome())) return true;
 		}
 		return false;
 	}
+	
+	public Jogo getJogo(String nomeJogo){
+		
+		for (Jogo jogo : jogos) {
+			if(nomeJogo.equals(jogo.getNome()))
+				return jogo;
+		}
+		return null;
+	}
+	
 
 
 	public String getNome() {

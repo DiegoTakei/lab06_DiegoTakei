@@ -19,13 +19,13 @@ public abstract class Jogo {
 		if (nome != "")
 			this.nome = nome;
 		else{
-			throw new Exception("Nome inválido.");
+			throw new Exception("Nome inv�lido.");
 		}
 		
 		if (preco > 0)
 			this.preco = preco;
 		else{
-			throw new Exception("Preço inválido.");
+			throw new Exception("Preço inv�lido.");
 		}
 		
 		this.score = 0;

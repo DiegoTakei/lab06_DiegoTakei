@@ -5,9 +5,9 @@ import java.util.HashSet;
 import exceptions.UsuarioException;
 import jogos.Jogo;
 
-public class Veterano extends Usuario {
+public class Veterano extends Usuario implements TipodeUsuarioIF{
 
-public Veterano(String nome, String login, double dinheiro) throws UsuarioException{
+	public Veterano(String nome, String login, double dinheiro) throws UsuarioException{
 		
 		if(nome != "")
 			this.nome = nome;
@@ -29,7 +29,30 @@ public Veterano(String nome, String login, double dinheiro) throws UsuarioExcept
 		this.jogos = new HashSet<>();
 		this.x2p = 1000;
 		
-}
+	}
+	
+	@Override
+	public void recompensar(String nomeJogo, int scoreObtido, boolean zerou){
+		
+		Jogo jogo = super.getJogo(nomeJogo);
+		
+		if(jogo.getEstilo().contains("Online"))
+			this.x2p += 10;
+		if(jogo.getEstilo().contains("Cooperativo"))
+			this.x2p += 20;		
+	}
+	
+	@Override
+	public void punir(String nomeJogo, int scoreObtido, boolean zerou){
+
+		Jogo jogo = super.getJogo(nomeJogo);
+
+		if(jogo.getEstilo().contains("Competitivo"))
+			this.x2p -= 20;
+		if(jogo.getEstilo().contains("Offline"))
+			this.x2p -= 20;
+	}
+
 	
 	/**
 	 * Compra um jogo com seu desconto.
