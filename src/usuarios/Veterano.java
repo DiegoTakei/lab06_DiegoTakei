@@ -2,6 +2,7 @@ package usuarios;
 
 import java.util.HashSet;
 
+import br.edu.ufcg.Jogabilidade;
 import exceptions.UsuarioException;
 import jogos.Jogo;
 
@@ -36,9 +37,9 @@ public class Veterano extends Usuario implements TipodeUsuarioIF{
 		
 		Jogo jogo = super.getJogo(nomeJogo);
 		
-		if(jogo.getEstilo().contains("Online"))
+		if(jogo.getEstilo().contains(Jogabilidade.Online))
 			this.x2p += 10;
-		if(jogo.getEstilo().contains("Cooperativo"))
+		if(jogo.getEstilo().contains(Jogabilidade.Cooperativo))
 			this.x2p += 20;		
 	}
 	
@@ -47,9 +48,9 @@ public class Veterano extends Usuario implements TipodeUsuarioIF{
 
 		Jogo jogo = super.getJogo(nomeJogo);
 
-		if(jogo.getEstilo().contains("Competitivo"))
+		if(jogo.getEstilo().contains(Jogabilidade.Competitivo))
 			this.x2p -= 20;
-		if(jogo.getEstilo().contains("Offline"))
+		if(jogo.getEstilo().contains(Jogabilidade.Offline))
 			this.x2p -= 20;
 	}
 
@@ -72,6 +73,11 @@ public class Veterano extends Usuario implements TipodeUsuarioIF{
 		}else{
 			return false;
 		}
+	}
+	
+	@Override
+	public boolean upgrade(int x2p) {
+		return false;
 	}
 
 }

@@ -1,8 +1,10 @@
 package jogos;
 
+import exceptions.JogoException;
+
 public class Rpg extends Jogo {
 
-	public Rpg(String nome, double preco) throws Exception {
+	public Rpg(String nome, double preco) throws JogoException {
 		super(nome, preco);
 		// TODO Auto-generated constructor stub
 	}

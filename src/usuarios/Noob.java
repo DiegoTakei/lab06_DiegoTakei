@@ -2,6 +2,7 @@ package usuarios;
 
 import java.util.HashSet;
 
+import br.edu.ufcg.Jogabilidade;
 import exceptions.UsuarioException;
 import jogos.Jogo;
 
@@ -38,9 +39,9 @@ public class Noob extends Usuario implements TipodeUsuarioIF{
 		Jogo jogo = super.getJogo(nomeJogo);
 		
 		if (jogo != null)
-			if(jogo.getEstilo().contains("Offline"))
+			if(jogo.getEstilo().contains(Jogabilidade.Online))
 				this.x2p += 30;
-			if(jogo.getEstilo().contains("Multiplayer"))
+			if(jogo.getEstilo().contains(Jogabilidade.Multiplayer))
 				this.x2p += 10;
 		
 	}
@@ -51,11 +52,11 @@ public class Noob extends Usuario implements TipodeUsuarioIF{
 		Jogo jogo = super.getJogo(nomeJogo);
 		
 		if (jogo != null)
-			if(jogo.getEstilo().contains("Online"))
+			if(jogo.getEstilo().contains(Jogabilidade.Online))
 				this.x2p -= 10;
-			if(jogo.getEstilo().contains("Competitivo"))
+			if(jogo.getEstilo().contains(Jogabilidade.Competitivo))
 				this.x2p -= 20;
-			if(jogo.getEstilo().contains("Cooperativo"))
+			if(jogo.getEstilo().contains(Jogabilidade.Cooperativo))
 				this.x2p -= 50;
 		
 	}
@@ -78,6 +79,11 @@ public class Noob extends Usuario implements TipodeUsuarioIF{
 		}else{
 			return false;
 		}
+	}
+	
+	@Override
+	public boolean upgrade(int x2p) {
+		return x2p >= 1000;
 	}
 	
 	

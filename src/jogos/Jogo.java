@@ -3,6 +3,7 @@ package jogos;
 import java.util.HashSet;
 
 import br.edu.ufcg.Jogabilidade;
+import exceptions.JogoException;
 
 public abstract class Jogo {
 	
@@ -14,18 +15,18 @@ public abstract class Jogo {
 	protected HashSet<Jogabilidade> estilo;
 	
 
-	public Jogo(String nome, double preco) throws Exception {
+	public Jogo(String nome, double preco) throws JogoException {
 		
 		if (nome != "")
 			this.nome = nome;
 		else{
-			throw new Exception("Nome inválido.");
+			throw new JogoException("Nome inválido.");
 		}
 		
 		if (preco > 0)
 			this.preco = preco;
 		else{
-			throw new Exception("PreÃ§o inválido.");
+			throw new JogoException("Preço inválido.");
 		}
 		
 		this.score = 0;

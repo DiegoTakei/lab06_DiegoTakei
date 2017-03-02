@@ -1,8 +1,10 @@
 package jogos;
 
+import exceptions.JogoException;
+
 public class Luta extends Jogo {
 
-	public Luta(String nome, double preco) throws Exception {
+	public Luta(String nome, double preco) throws JogoException {
 		super(nome, preco);
 		// TODO Auto-generated constructor stub
 	}

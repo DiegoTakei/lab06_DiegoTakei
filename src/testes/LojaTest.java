@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.ufcg.Loja;
+import br.edu.ufcg.LojaController;
 import exceptions.LojaException;
 import exceptions.UsuarioException;
 import usuarios.Noob;
@@ -13,7 +13,7 @@ import usuarios.Usuario;
 
 public class LojaTest {
 	
-	private Loja loja = new Loja();
+	private LojaController loja = new LojaController();
 
 	@Before
 	public void test() throws UsuarioException{
