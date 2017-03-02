@@ -6,6 +6,7 @@ import exceptions.JogoException;
 import exceptions.LojaException;
 import exceptions.UsuarioException;
 import jogos.Jogo;
+import usuarios.TipoUsuarioEnum;
 import usuarios.Usuario;
 
 public class LojaController {
@@ -17,7 +18,7 @@ public class LojaController {
 	}
 	
 	/**
-	 * Adiciona dinheiro ï¿½ conta do usuï¿½rio cujo login foi passado por parï¿½metro.
+	 * Adiciona dinheiro à conta do usuário cujo login foi passado por parâmetro.
 	 * @param login
 	 * @param dinheiro
 	 * @throws LojaException
@@ -30,16 +31,16 @@ public class LojaController {
 			if(dinheiro>=0)
 				usuario.setDinheiro(dinheiro);
 			else{
-				throw new LojaException("Dinheiro Invï¿½lido.");
+				throw new LojaException("Dinheiro Inválido.");
 			}
 		}else{
-			throw new LojaException("Usuario nï¿½o existe.");
+			throw new LojaException("Usuario não existe.");
 		}
 		
 	}
 	
 	/**
-	 *  Vende e adiciona um jogo ï¿½ conta do usuï¿½rio, caso o mesmo possua dinheiro suficiente para comprï¿½-lo.
+	 *  Vende e adiciona um jogo à conta do usuário, caso o mesmo possua dinheiro suficiente para comprá-lo.
 	 * @param login
 	 * @param jogo
 	 * @return
@@ -50,7 +51,7 @@ public class LojaController {
 	}
 	
 	/**
-	 * Imprime todos os usuï¿½rios e seus respectivos jogos e estatï¿½sticas.
+	 * Imprime todos os usuários e seus respectivos jogos e estatísticas.
 	 */
 	public void imprimirAll(){
 		
@@ -73,16 +74,16 @@ public class LojaController {
 				System.out.println("Maior score: "+jogo.getScore());
 				
 			}
-			System.out.println("Total de preï¿½o dos jogos: R$ "+ totalPrecoJogos);
+			System.out.println("Total de preço dos jogos: R$ "+ totalPrecoJogos);
 		}
 		
 	}
 	
-	public void criaUsuario(String nome, String login, String tipo) throws UsuarioException{
+	public void criaUsuario(String nome, String login) throws UsuarioException{
 		
 		FactoryDeUsuario factory = new FactoryDeUsuario();
 		
-		factory.criaUsuario(nome, login, tipo);
+		factory.criaUsuario(nome, login, TipoUsuarioEnum.NOOB);
 		
 	}
 	
@@ -95,7 +96,7 @@ public class LojaController {
 	}
 	
 	/**
-	 * Adiciona um usuï¿½rio ï¿½ loja.
+	 * Adiciona um usuário à loja.
 	 * @param usuario
 	 */
 	public void adicionarUsuario(Usuario usuario){
@@ -105,7 +106,7 @@ public class LojaController {
 	}
 	
 	/**
-	 * Pesquisa um usuï¿½rio existente na loja.
+	 * Pesquisa um usuário existente na loja.
 	 * @param login
 	 * @return
 	 */

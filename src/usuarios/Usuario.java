@@ -1,7 +1,7 @@
 package usuarios;
 
 import java.text.NumberFormat;
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import exceptions.UpgradeInvalidoException;
 import exceptions.UsuarioException;
@@ -12,9 +12,29 @@ public class Usuario {
 	private TipodeUsuarioIF statusDoUsuario;
 	protected String nome;
 	protected String login;
-	protected HashSet<Jogo> jogos;
+	protected ArrayList<Jogo> jogos;
 	protected double dinheiro;
 	protected int x2p;	
+	
+	
+	public Usuario(String nome, String login, TipodeUsuarioIF statusUsuario) throws UsuarioException {
+		if (nome == null){
+			throw new NullPointerException("Nome nao pode ser nulo");
+		}
+		if (nome.trim().equals("")){
+			throw new UsuarioException("Nome invalido");
+		}
+		if (login == null){
+			throw new NullPointerException("Login nao pode ser nulo");
+		}
+		if (login.trim().equals("")){
+			throw new UsuarioException("Login invalido");
+		}
+		this.nome = nome;
+		this.login = login;
+		jogos = new ArrayList<Jogo>();
+		this.statusDoUsuario = statusUsuario;
+	}
 	
 	/**
 	 * Adiciona dinheiro ao usuário caso o valor passado por parâmetro seja válido.
@@ -108,7 +128,7 @@ public class Usuario {
 	}
 
 
-	public HashSet<Jogo> getJogos() {
+	public ArrayList<Jogo> getJogos() {
 		return jogos;
 	}
 
@@ -127,7 +147,39 @@ public class Usuario {
 		this.dinheiro = dinheiro;
 	}
 	
+	public TipodeUsuarioIF getStatusUsuario() {
+		return statusDoUsuario;
+	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		/*Nesse caso, usei o instanceof pois não pode haver repetições na minha
+		 * lista de usuários. Dessa forma, não podemos ter um usuario noob e veterano
+		 * com o mesmo login.
+		 */
+		if (!(this instanceof Usuario))
+			return false;
+		Usuario other = (Usuario) obj;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		return true;
+	}
+
 	
 	
 	

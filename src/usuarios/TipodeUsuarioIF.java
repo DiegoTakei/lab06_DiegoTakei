@@ -3,10 +3,11 @@ package usuarios;
 import jogos.Jogo;
 
 public interface TipodeUsuarioIF {
-	
-	public abstract boolean comprarJogo(Jogo jogo);
-	public abstract void recompensar(String nomeJogo, int scoreObtido, boolean zerou);				
-	public abstract void punir(String nomeJogo, int scoreObtido, boolean zerou);
+
+	public abstract int recompensar(Jogo jogo, int scoreObtido, boolean zerou);				
+	public abstract int punir(Jogo jogo, int scoreObtido, boolean zerou);
 	public abstract boolean upgrade(int x2p);
+	public int getDesconto();
+	public int getDeltaX2P();
 
 }

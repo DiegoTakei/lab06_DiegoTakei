@@ -5,10 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.edu.ufcg.FactoryDeUsuario;
 import br.edu.ufcg.LojaController;
 import exceptions.LojaException;
 import exceptions.UsuarioException;
-import usuarios.Noob;
+import usuarios.TipoUsuarioEnum;
 import usuarios.Usuario;
 
 public class LojaTest {
@@ -18,7 +19,9 @@ public class LojaTest {
 	@Before
 	public void test() throws UsuarioException{
 		
-		Usuario usuario = new Noob("Noob", "noob",0);		
+		FactoryDeUsuario user = new FactoryDeUsuario();
+		
+		Usuario usuario = user.criaUsuario("noob", "noob1", TipoUsuarioEnum.NOOB);
 		loja.adicionarUsuario(usuario);
 		
 	}
