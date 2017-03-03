@@ -1,6 +1,6 @@
 package br.edu.ufcg;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import exceptions.JogoException;
 import exceptions.LojaException;
@@ -11,7 +11,7 @@ import usuarios.Usuario;
 
 public class LojaController {
 
-	HashSet<Usuario> usuarios = new HashSet<Usuario>();
+	ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	public LojaController() {
 		
@@ -121,4 +121,13 @@ public class LojaController {
 		
 	}
 
+	public ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	
 }
